@@ -1,5 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/ANDROID PROJECTS/PMKissanYojanaList/app/src/main/res/drawable/drawer_item.xml" value="0.135" />
+        <entry key="..\:/ANDROID PROJECTS/PMKissanYojanaList/app/src/main/res/layout/activity_dashboard.xml" value="0.18604651162790697" />
+        <entry key="..\:/ANDROID PROJECTS/PMKissanYojanaList/app/src/main/res/layout/activity_news.xml" value="0.19895833333333332" />
+        <entry key="..\:/ANDROID PROJECTS/PMKissanYojanaList/app/src/main/res/layout/activity_privacy.xml" value="0.19895833333333332" />
+        <entry key="..\:/ANDROID PROJECTS/PMKissanYojanaList/app/src/main/res/layout/activity_splash.xml" value="0.18" />
+        <entry key="..\:/ANDROID PROJECTS/PMKissanYojanaList/app/src/main/res/layout/activity_start.xml" value="0.18" />
+        <entry key="..\:/ANDROID PROJECTS/PMKissanYojanaList/app/src/main/res/layout/activity_tab.xml" value="0.19479166666666667" />
+        <entry key="..\:/ANDROID PROJECTS/PMKissanYojanaList/app/src/main/res/layout/activity_update_profile.xml" value="0.14" />
+        <entry key="..\:/ANDROID PROJECTS/PMKissanYojanaList/app/src/main/res/layout/activity_view_status.xml" value="0.19895833333333332" />
+        <entry key="..\:/ANDROID PROJECTS/PMKissanYojanaList/app/src/main/res/layout/activity_web.xml" value="0.1" />
+        <entry key="..\:/ANDROID PROJECTS/PMKissanYojanaList/app/src/main/res/layout/activity_yojana_detail.xml" value="0.1" />
+        <entry key="..\:/ANDROID PROJECTS/PMKissanYojanaList/app/src/main/res/layout/ad_layout.xml" value="0.1" />
+        <entry key="..\:/ANDROID PROJECTS/PMKissanYojanaList/app/src/main/res/layout/bottom_sheet_layout.xml" value="0.19479166666666667" />
+        <entry key="..\:/ANDROID PROJECTS/PMKissanYojanaList/app/src/main/res/layout/create_profile_layout.xml" value="0.1" />
+        <entry key="..\:/ANDROID PROJECTS/PMKissanYojanaList/app/src/main/res/layout/fragment_details.xml" value="0.25" />
+        <entry key="..\:/ANDROID PROJECTS/PMKissanYojanaList/app/src/main/res/layout/fragment_news.xml" value="0.19895833333333332" />
+        <entry key="..\:/ANDROID PROJECTS/PMKissanYojanaList/app/src/main/res/layout/fragment_others.xml" value="0.19895833333333332" />
+        <entry key="..\:/ANDROID PROJECTS/PMKissanYojanaList/app/src/main/res/layout/fragment_quiz.xml" value="0.19895833333333332" />
+        <entry key="..\:/ANDROID PROJECTS/PMKissanYojanaList/app/src/main/res/layout/fragment_status.xml" value="0.19895833333333332" />
+        <entry key="..\:/ANDROID PROJECTS/PMKissanYojanaList/app/src/main/res/layout/fragment_tab.xml" value="0.1" />
+        <entry key="..\:/ANDROID PROJECTS/PMKissanYojanaList/app/src/main/res/layout/fragment_yojana.xml" value="0.19895833333333332" />
+        <entry key="..\:/ANDROID PROJECTS/PMKissanYojanaList/app/src/main/res/layout/header.xml" value="0.16" />
+        <entry key="..\:/ANDROID PROJECTS/PMKissanYojanaList/app/src/main/res/layout/loading.xml" value="0.19895833333333332" />
+        <entry key="..\:/ANDROID PROJECTS/PMKissanYojanaList/app/src/main/res/layout/native_ad_layout.xml" value="0.19895833333333332" />
+        <entry key="..\:/ANDROID PROJECTS/PMKissanYojanaList/app/src/main/res/layout/show_status_layout.xml" value="0.19895833333333332" />
+        <entry key="..\:/ANDROID PROJECTS/PMKissanYojanaList/app/src/main/res/layout/status_layout.xml" value="0.19895833333333332" />
+        <entry key="..\:/ANDROID PROJECTS/PMKissanYojanaList/app/src/main/res/layout/yojna_layout.xml" value="0.19895833333333332" />
+        <entry key="..\:/ANDROID PROJECTS/PMKissanYojanaList/app/src/main/res/menu/menu.xml" value="0.1" />
+        <entry key="..\:/ANDROID PROJECTS/PMKissanYojanaList/app/src/main/res/xml/ad.xml" value="0.1" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
