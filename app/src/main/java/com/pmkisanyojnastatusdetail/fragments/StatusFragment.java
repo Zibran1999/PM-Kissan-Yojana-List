@@ -258,7 +258,7 @@ public class StatusFragment extends Fragment implements StatusClickListener {
                 }
                 Collections.reverse(statusModelLis);
                 statusAdapter.updateStatusList(statusModelLis);
-//                CommonMethod.getBannerAds(requireActivity(), binding.adViewStatus);
+                CommonMethod.getBannerAds(requireActivity(), binding.adViewStatus);
 
             } else {
                 binding.recentUpdateLayout.setVisibility(View.GONE);

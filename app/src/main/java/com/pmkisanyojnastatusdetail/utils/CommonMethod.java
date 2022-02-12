@@ -8,7 +8,9 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.util.Log;
+import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -17,6 +19,13 @@ import com.evernote.android.job.Job;
 import com.evernote.android.job.JobManager;
 import com.evernote.android.job.JobRequest;
 import com.evernote.android.job.util.support.PersistableBundleCompat;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.pmkisanyojnastatusdetail.BuildConfig;
 import com.pmkisanyojnastatusdetail.R;
 import com.pmkisanyojnastatusdetail.models.ApiInterface;
@@ -29,13 +38,14 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import io.paperdb.Paper;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 
 public class CommonMethod extends Job {
-    //    public static InterstitialAd mInterstitialAd;
+    public static InterstitialAd mInterstitialAd;
     public static int jobId;
     ApiInterface apiInterface;
 
@@ -47,6 +57,7 @@ public class CommonMethod extends Job {
         i.putExtra(Intent.EXTRA_SUBJECT, "Hello");
         i.putExtra(Intent.EXTRA_TEXT, "I need some help regarding ");
         try {
+            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(Intent.createChooser(i, "Send mail..."));
         } catch (ActivityNotFoundException ex) {
             Toast.makeText(context, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
@@ -140,35 +151,38 @@ public class CommonMethod extends Job {
     }
 
     public static void interstitialAds(Context context) {
-//        MobileAds.initialize(context);
-//        AdRequest adRequest = new AdRequest.Builder().build();
-//        InterstitialAd.load(context, context.getString(R.string.interstitial_id), adRequest,
-//                new InterstitialAdLoadCallback() {
-//                    @Override
-//                    public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
-//                        // The mInterstitialAd reference will be null until
-//                        // an ad is loaded.
-//                        mInterstitialAd = interstitialAd;
-//                        Log.i("TAG", "InteronAdLoaded");
-//                    }
-//
-//                    @Override
-//                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-//                        // Handle the error
-//                        Log.i("TAGError", loadAdError.getMessage());
-//                        mInterstitialAd = null;
-//                    }
-//                });
-    }
+        MobileAds.initialize(context);
+        String id = Paper.book().read(Prevalent.interstitialAds);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        InterstitialAd.load(context, id, adRequest,
+                new InterstitialAdLoadCallback() {
+                    @Override
+                    public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+                        // The mInterstitialAd reference will be null until
+                        // an ad is loaded.
+                        mInterstitialAd = interstitialAd;
+                        Log.i("TAG", "InteronAdLoaded");
+                    }
 
-//    public static void getBannerAds(Context context, AdView adView) {
-////        AdRequest adRequest = new AdRequest.Builder().build();
-////        MobileAds.initialize(context);
-////        adView.loadAd(adRequest);
-////        adView.setVisibility(View.VISIBLE);
-//
-//
-//    }
+                    @Override
+                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                        // Handle the error
+                        Log.i("TAGError", loadAdError.getMessage());
+                        mInterstitialAd = null;
+                    }
+                });
+    }
+    public static void getBannerAds(Context context, RelativeLayout container) {
+        String id = Paper.book().read(Prevalent.bannerAds);
+        MobileAds.initialize(context);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        AdView adView = new AdView(context);
+        container.addView(adView);
+        adView.setAdUnitId(id);
+        adView.setAdSize(AdSize.BANNER);
+        adView.loadAd(adRequest);
+        container.setVisibility(View.VISIBLE);
+    }
 
     public static void cancelJob(int jobId) {
         JobManager.instance().cancelAll();

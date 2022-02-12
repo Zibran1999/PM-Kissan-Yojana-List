@@ -31,7 +31,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:gravity="center"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:minHeight="?actionBarSize"
                 android:text="@string/app_name"
                 android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
@@ -49,7 +49,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/title"
-                app:tint="@color/black" />
+                app:tint="@color/white" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.bumptech.glide.Glide;
+import com.google.android.gms.ads.MobileAds;
 import com.pmkisanyojnastatusdetail.databinding.ActivityNewsBinding;
 import com.pmkisanyojnastatusdetail.models.ModelFactory;
 import com.pmkisanyojnastatusdetail.models.PageViewModel;
@@ -47,7 +48,7 @@ public class NewsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityNewsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-//        MobileAds.initialize(NewsActivity.this);
+        MobileAds.initialize(NewsActivity.this);
         newsImg = binding.newsImg;
         newsTitle = binding.newsTitle;
         newsDesc = binding.newsDesc;
@@ -73,7 +74,7 @@ public class NewsActivity extends AppCompatActivity {
                 img = getIntent().getStringExtra("img");
                 Glide.with(this).load("https://gedgetsworld.in/PM_Kisan_Yojana/News_Images/" + img).into(newsImg);
                 newsTitle.setText(title);
-//                CommonMethod.getBannerAds(this, binding.adViewNews);
+                CommonMethod.getBannerAds(this, binding.adViewNews);
                 for (PreviewModel m : previewModelList.getData()) {
                     if (m.getPreviewId().equals(id)) {
                         String replaceString = m.getDesc().replaceAll("<.*?>", "");

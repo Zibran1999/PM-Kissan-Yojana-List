@@ -43,4 +43,8 @@
 
     <string name="ad_attribution">AD</string>
 
+    <style name="CustomAlertDialog" parent="Theme.MaterialComponents.DayNight.Dialog.Alert">
+
+    </style>
+
 </resources>

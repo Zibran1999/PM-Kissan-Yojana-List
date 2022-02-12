@@ -160,10 +160,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
             pageViewModel = new ViewModelProvider(this, new ModelFactory(this.getApplication(), map)).get(PageViewModel.class);
         }
 
-        binding.lottieEmail.setOnClickListener(view -> {
-            CommonMethod.contactUs(this);
-
-        });
+        binding.lottieEmail.setOnClickListener(view -> CommonMethod.contactUs(DashboardActivity.this));
         intentFilter = new IntentFilter();
         intentFilter.addAction(BroadCastStringForAction);
         Intent serviceIntent = new Intent(this, MyReceiver.class);
@@ -299,12 +296,12 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_home:
-                startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
+                startActivity(new Intent(DashboardActivity.this, DashboardActivity.class));
                 overridePendingTransition(0, 0);
                 finish();
                 break;
             case R.id.nav_contact:
-                CommonMethod.contactUs(getApplicationContext());
+                CommonMethod.contactUs(DashboardActivity.this);
                 break;
             case R.id.nav_rate:
                 FirebaseAnalytics mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
@@ -363,7 +360,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
     @Override
     public void onBackPressed() {
-        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this);
+        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this,R.style.CustomAlertDialog);
         builder.setTitle(R.string.app_name)
                 .setIcon(R.mipmap.ic_launcher)
                 .setMessage("Do You Really Want To Exit?\nAlso Rate Us 5 Star.")

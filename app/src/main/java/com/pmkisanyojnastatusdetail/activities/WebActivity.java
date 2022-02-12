@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.ads.MobileAds;
 import com.pmkisanyojnastatusdetail.databinding.ActivityWebBinding;
 import com.pmkisanyojnastatusdetail.utils.CommonMethod;
 
@@ -34,8 +35,7 @@ public class WebActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityWebBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-//        MobileAds.initialize(this);
-//        CommonMethod.interstitialAds(this);
+        MobileAds.initialize(this);
         webView = binding.webView;
         title = binding.title;
         binding.backIcon.setOnClickListener(v -> onBackPressed());
@@ -98,7 +98,7 @@ public class WebActivity extends AppCompatActivity {
             public void onPageFinished(WebView view, String url) {
                 // TODO Auto-generated method stub
                 dialog.dismiss();
-//                CommonMethod.getBannerAds(WebActivity.this, binding.adViewWebView);
+               CommonMethod.getBannerAds(WebActivity.this, binding.adViewWebView);
 
                 super.onPageFinished(view, url);
             }
