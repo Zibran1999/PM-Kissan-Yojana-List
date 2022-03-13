@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PM Kissan Yojana List</string>
+    <string name="app_name">PM Kisan Yojna</string>
     <string name="title_activity_tab">TabActivity</string>
         <string name="tab_text_1">Yojana</string>
     <string name="tab_text_2">News</string>
@@ -22,17 +22,11 @@
 <!--            <string name="app_id">ca-app-pub-3940256099942544~3347511713</string>-->
 <!--            <string name="native_ads">ca-app-pub-3940256099942544/2247696110</string>-->
 
+    <string name="app_id">ca-app-pub-1306982071797241~9490406274</string>
 
-    <!--Real ads ids-->
 
-<!--    <string name="app_id">ca-app-pub-1247850544347178~2799712755</string>-->
-    <!--    <string name="banner_id">ca-app-pub-1247850544347178/8965665855</string>-->
-    <!--    <string name="interstitial_id">ca-app-pub-1247850544347178/8926137402</string>-->
-    <!--    <string name="native_ads">ca-app-pub-1247850544347178/5185756803</string>-->
 
-<!--    <string name="banner_id">/22569351198/chakdo_com.pmkisanyojana_banner</string>-->
-<!--    <string name="interstitial_id">/22569351198/chakdo_com.pmkisanyojana_interstitial</string>-->
-<!--    <string name="native_ads">/22569351198/chakdo_com.pmkisanyojana_native</string>-->
+
 
 
 

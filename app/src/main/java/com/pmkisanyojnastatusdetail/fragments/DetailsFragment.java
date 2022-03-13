@@ -1,5 +1,7 @@
 package com.pmkisanyojnastatusdetail.fragments;
 
+import static com.pmkisanyojnastatusdetail.utils.CommonMethod.mInterstitialAd;
+
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
@@ -21,6 +23,9 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.google.android.gms.ads.AdError;
+import com.google.android.gms.ads.FullScreenContentCallback;
+import com.google.android.gms.ads.MobileAds;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.button.MaterialButtonToggleGroup;
 import com.pmkisanyojnastatusdetail.R;
@@ -88,7 +93,7 @@ public class DetailsFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-//            MobileAds.initialize(requireActivity());
+            MobileAds.initialize(requireActivity());
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
@@ -129,7 +134,8 @@ public class DetailsFragment extends Fragment {
         hindi = binding.hindiPreview;
         english = binding.englishPreview;
         List<PreviewModel> previewModels = new ArrayList<>();
-//        MobileAds.initialize(requireActivity());
+
+       MobileAds.initialize(requireActivity());
 
 
         pageViewModel = new ViewModelProvider(this, new ModelFactory(requireActivity().getApplication(), map)).get(PageViewModel.class);
@@ -138,14 +144,14 @@ public class DetailsFragment extends Fragment {
             previewModels.addAll(previewModelList.getData());
             if (!previewModels.isEmpty()) {
 
-//                CommonMethod.getBannerAds(requireActivity(), binding.adViewData);
+                CommonMethod.getBannerAds(requireActivity(), binding.adViewData);
                 lottieAnimationView.setVisibility(View.GONE);
                 String hindiString = null;
                 String englishString = null;
                 for (PreviewModel m : previewModelList.getData()) {
                     if (m.getPreviewId().equals(id)) {
                         hindi.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.purple_200));
-                        hindi.setTextColor(Color.BLACK);
+                        hindi.setTextColor(Color.WHITE);
 
                         String replaceString = m.getDesc().replaceAll("<.*?>", "");
                         String removeNumeric = replaceString.replaceAll("[0-9]", "");
@@ -193,16 +199,18 @@ public class DetailsFragment extends Fragment {
 
                     switch (checkedId) {
                         case R.id.hindiPreview:
+                            CommonMethod.getBannerAds(requireActivity(), binding.adViewData);
                             english.setBackgroundColor(0);
                             english.setTextColor(Color.BLACK);
                             hindi.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.purple_200));
-                            hindi.setTextColor(Color.BLACK);
+                            hindi.setTextColor(Color.WHITE);
                             webView.loadDataWithBaseURL(null, finalHindiString, "text/html", "UTF-8", null);
                             webView.setVisibility(View.VISIBLE);
                             break;
                         case R.id.englishPreview:
+                            CommonMethod.getBannerAds(requireActivity(), binding.adViewData);
                             english.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.purple_200));
-                            english.setTextColor(Color.BLACK);
+                            english.setTextColor(Color.WHITE);
                             hindi.setBackgroundColor(0);
                             hindi.setTextColor(Color.BLACK);
                             webView.loadDataWithBaseURL(null, finalEnglishString, "text/html", "UTF-8", null);
@@ -233,12 +241,45 @@ public class DetailsFragment extends Fragment {
         webView.setWebChromeClient(new WebChromeClient() {
             @Override
             public boolean onCreateWindow(WebView view, boolean dialog, boolean userGesture, android.os.Message resultMsg) {
-                WebView.HitTestResult result = view.getHitTestResult();
-                String data = result.getExtra();
-                Context context = view.getContext();
-                Intent browserIntent = new Intent(requireActivity(), WebActivity.class);
-                browserIntent.putExtra("url", data);
-                context.startActivity(browserIntent);
+                if (mInterstitialAd != null) {
+                    mInterstitialAd.show(requireActivity());
+                    mInterstitialAd.setFullScreenContentCallback(new FullScreenContentCallback(){
+                        @Override
+                        public void onAdDismissedFullScreenContent() {
+                            // Called when fullscreen content is dismissed.
+                            WebView.HitTestResult result = view.getHitTestResult();
+                            String data = result.getExtra();
+                            Context context = view.getContext();
+                            Intent browserIntent = new Intent(requireActivity(), WebActivity.class);
+                            browserIntent.putExtra("url", data);
+                            context.startActivity(browserIntent);
+                        }
+
+                        @Override
+                        public void onAdFailedToShowFullScreenContent(AdError adError) {
+                            // Called when fullscreen content failed to show.
+                            Log.d("TAG", "The ad failed to show.");
+                        }
+
+                        @Override
+                        public void onAdShowedFullScreenContent() {
+                            // Called when fullscreen content is shown.
+                            // Make sure to set your reference to null so you don't
+                            // show it a second time.
+                            mInterstitialAd = null;
+                            Log.d("TAG", "The ad was shown.");
+                        }
+                    });
+                } else {
+                    CommonMethod.interstitialAds(requireActivity());
+
+                    WebView.HitTestResult result = view.getHitTestResult();
+                    String data = result.getExtra();
+                    Context context = view.getContext();
+                    Intent browserIntent = new Intent(requireActivity(), WebActivity.class);
+                    browserIntent.putExtra("url", data);
+                    context.startActivity(browserIntent);
+                }
                 return false;
             }
         });

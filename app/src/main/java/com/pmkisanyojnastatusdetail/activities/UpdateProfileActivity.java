@@ -236,7 +236,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
 
     // Here we will pick image from gallery or camera
     private void pickFromGallery() {
-//        CropImage.activity().start(this);
+        CropImage.activity().start(this);
     }
 
     private void updateUserProfile(Map<String, String> map) {

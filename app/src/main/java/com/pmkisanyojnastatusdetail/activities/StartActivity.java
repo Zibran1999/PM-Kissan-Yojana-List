@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.ads.MobileAds;
 import com.pmkisanyojnastatusdetail.databinding.ActivityStartBinding;
 import com.pmkisanyojnastatusdetail.utils.CommonMethod;
 
@@ -18,9 +19,8 @@ public class StartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityStartBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-//        MobileAds.initialize(this);
-//        CommonMethod.interstitialAds(StartActivity.this);
-//        CommonMethod.getBannerAds(this, binding.adView);
+        MobileAds.initialize(this);
+        CommonMethod.getBannerAds(this, binding.adView);
         binding.startBtn.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
             startActivity(intent);

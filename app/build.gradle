@@ -45,11 +45,11 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     // Lifecycle
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.0'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
 
     // lottie, paper, and image cropper
-    implementation "com.airbnb.android:lottie:4.1.0"
+    implementation "com.airbnb.android:lottie:4.2.2"
 
     implementation 'io.github.pilgr:paperdb:2.7.1'
     // Firebase
@@ -59,6 +59,7 @@ dependencies {
 
     // OneSignal
     implementation 'com.onesignal:OneSignal:[4.0.0, 4.99.99]'
+
     // Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
@@ -73,9 +74,9 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
 
     // ads
-//    implementation 'com.google.android.gms:play-services-ads:20.5.0'
-//    implementation 'com.google.ads.mediation:facebook:6.8.0.0'
-//    implementation 'com.google.android.ads:mediation-test-suite:2.0.0'
+    implementation 'com.google.android.gms:play-services-ads:20.5.0'
+    implementation 'com.google.ads.mediation:facebook:6.8.0.0'
+    implementation 'com.google.android.ads:mediation-test-suite:2.0.0'
 
     // story progress view
     implementation 'com.github.3llomi:CircularStatusView:V1.0.2'
